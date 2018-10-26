@@ -48,7 +48,7 @@ invisible.on("message", async msg => {
             
             var count = parseInt(args[1]);
             
-            if (count <= 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`fix\nInvailed numbers..\n\`\`\``).then(async m => m.delete(4333))
+            if (count <= 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`diff\nInvailed numbers..\n\`\`\``).then(async m => m.delete(4333))
 
      
             if (!args[1]) {
@@ -146,6 +146,6 @@ invisible.on("message", async msg => {
         })
     }*/
  else if (command === "ping") {
-  return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`fix\n${invisible.ping.toFixed(0)}\n\`\`\``)
+  return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`diff\n${invisible.ping.toFixed(0)}\n\`\`\``)
 }
 });
