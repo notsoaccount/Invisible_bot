@@ -8,9 +8,9 @@ var settings = require("./settings.json")
 
 var cooldown = new Set();
 
-invisible.commands = new Discord.Collection();
+invisible.commands = new notDiscord.Collection();
 
-invisible.aliases = new Discord.Collection();
+invisible.aliases = new notDiscord.Collection();
 
 var secs = 4;
 
