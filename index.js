@@ -48,7 +48,7 @@ fs.readdir('./cmds/', (err, files) => {
 });
 
 
-invsible.on("message", msg => {
+invisible.on("message", msg => {
  
     if (invisible.users.get(msg.author.id).bot) return undefined;
    
