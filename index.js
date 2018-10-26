@@ -38,7 +38,7 @@ fs.readdir('./cmds/', (err, files) => {
 	}
 	console.log(`[Commands]\tLoaded a total amount ${files.length} Commands`);
 	jsfiles.forEach(f => {
-		var props = require(`./commands/${ f }`);
+		var props = require(`./cmds/${ f }`);
 		props.fileName = f;
 		invisbile.commands.set(props.help.name, props);
 		props.conf.aliases.forEach(alias => {
