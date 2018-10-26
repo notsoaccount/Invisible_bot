@@ -114,8 +114,9 @@ invisible.on("message", async msg => {
                             if (msgs.size == 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                             else {
                                 var x = 0
-                                var m = await msgs.map(m => `# The last bulked msg is the first one here.. ${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                               await hastebin(m, "md").then(async url => {
+                                var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
+                                var l = "# The last bulked msg is the first one here.. "
+                                await hastebin(l + m, "md").then(async url => {
                                     return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size}/${count} msgs..\n# ${url}\n\`\`\``)
                                 })
                             }
