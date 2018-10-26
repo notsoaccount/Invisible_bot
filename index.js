@@ -63,10 +63,10 @@ invsible.on("message", msg => {
 
 	var cmd;
 
-	if (client.commands.has(command)) {
-		cmd = client.commands.get(command);
-	} else if (client.aliases.has(command)) {
-		cmd = client.commands.get(client.aliases.get(command));
+	if (invisible.commands.has(command)) {
+		cmd = invisible.commands.get(command);
+	} else if (invisible.aliases.has(command)) {
+		cmd = invisible.commands.get(invisible.aliases.get(command));
 	}
 	cmd.run(client, message, args);
 });
