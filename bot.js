@@ -86,7 +86,7 @@ invisible.on("message", async msg => {
                                     var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
                                     var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
                                     await hastebin(l + m, "md").then(async url => {
-                                        return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs for ${mention}..\n# ${url}\n\`\`\``)
+                                        return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs for "${mention.user.tag}"..\n# ${url}\n\`\`\``)
                                     })                                
                                 }                  
                             })
