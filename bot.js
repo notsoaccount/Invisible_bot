@@ -116,7 +116,7 @@ invisible.on("message", async msg => {
                                 var x = 0
                                 var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
                                 var l = "The last bulked msg is the first one here..".join("\n")
-                                var i = `# The bulked msgs of ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name}`
+                                var i = `# The bulked msgs of ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name}`.join("\n")
                                await hastebin(l + i + m, "md").then(async url => {
                                     return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size}/${count} msgs..\n# ${url}\n\`\`\``)
                                 })
