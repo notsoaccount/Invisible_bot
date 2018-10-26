@@ -47,6 +47,7 @@ fs.readdir('./cmds/', (err, files) => {
 	});
 });
 
+
 invsible.on("message", msg => {
  
     if (invisible.users.get(msg.author.id).bot) return undefined;
@@ -60,21 +61,15 @@ invsible.on("message", msg => {
     var command = msg.content.slice(prefix.length).trim().split(/ +/g).shift().toLowerCase();
 
 
-    var cmd;
- 
-    if (invsible.commands.has(command)) {
-     
-     cmd = invisible.commands.get(command);
-     
-    } else if (client.aliases.has(command)) {
-     
-     cmd = invisible.commands.get(invsible.aliases.get(command));
-     
-    }
-     cmd.run(invisible, msg, args);
-	};
-})
+	var cmd;
 
+	if (client.commands.has(command)) {
+		cmd = client.commands.get(command);
+	} else if (client.aliases.has(command)) {
+		cmd = client.commands.get(client.aliases.get(command));
+	}
+	cmd.run(client, message, args);
+});
 /*
 invisible.on("message", async msg => {
    
