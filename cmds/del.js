@@ -37,7 +37,7 @@ module.exports.run = async (invisible, msg, args, cooldown, secs, O) => {
                         await invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).fetchMessages().then(async msgs => {
                             await invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).bulkDelete(msgs.filter(m => m.author.id == mention.id)).then(async msgs => {
                                 if (msg.author.id == msg.mentions.users.first().id) {
-                                    if (msgs.size == 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg for "YOU" to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
+                                    if (msgs.size == 0 || msgs.size == 1) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg for "YOU" to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                                     var x = 0
                                     var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
                                     var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
@@ -64,7 +64,7 @@ module.exports.run = async (invisible, msg, args, cooldown, secs, O) => {
                 else if (count) {
                     if (count == 100) {
                             await invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).bulkDelete(100, true).then(async msgs => {
-                                if (msgs.size == 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
+                                if (msgs.size == 0 || msgs.size == 1) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                                 else {
                                     var x = 0
                                     var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
@@ -77,7 +77,7 @@ module.exports.run = async (invisible, msg, args, cooldown, secs, O) => {
                     }   //
                     else if (count !== 100 && count < 100) {
                         await invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).bulkDelete(count, true).then(async msgs => {
-                            if (msgs.size == 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
+                            if (msgs.size == 0 || msgs.size == 1) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                             else {
                                 var x = 0
                                 var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
@@ -105,5 +105,5 @@ module.exports.run = async (invisible, msg, args, cooldown, secs, O) => {
 }
 
 exports.help = {
-  "name" : "purge"
+  "name" : "purge" || "name" : "prune" || "name" : "clear" || "name" : "del"|| "name" : "bulk"
 }
