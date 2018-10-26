@@ -2,8 +2,6 @@ var notDiscord = require("discord.js")
  
 var invisible = new notDiscord.Client({disableEveryone : true})
  
-var hastebin = require('hastebin-gen');
-
 var settings = require("./settings.json")
 
 var cooldown = new Set();
@@ -65,5 +63,5 @@ invisible.on("message", msg => {
 	} else if (invisible.aliases.has(command)) {
 		cmd = invisible.commands.get(invisible.aliases.get(command));
 	}
-	cmd.run(invisible, msg, args, cooldown, secs);
+	cmd.run(invisible, msg, args, cooldown, secs, O);
 });
