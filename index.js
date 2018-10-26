@@ -8,9 +8,15 @@ var settings = require("./settings.json")
 
 var cooldown = new Set();
 
+invisible.commands = new Discord.Collection();
+
+invisible.aliases = new Discord.Collection();
+
 var secs = 4;
 
 var prefix = settings.prefix;
+
+var fs = require("fs")
 
 var O = settings.id;
 
@@ -22,6 +28,54 @@ invisible.on("error", async error => console.error(error))
 
 invisible.on("warn", async warn => console.warn(warn))
 
+
+fs.readdir('./cmds/', (err, files) => {
+	if (err) console.error(err);
+	var jsfiles = files.filter(f => f.split('.').pop() === 'js');
+	if (jsfiles.length <= 0) {
+		console.log('No commands to load!');
+		return undefined;
+	}
+	console.log(`[Commands]\tLoaded a total amount ${files.length} Commands`);
+	jsfiles.forEach(f => {
+		var props = require(`./commands/${ f }`);
+		props.fileName = f;
+		invisbile.commands.set(props.help.name, props);
+		props.conf.aliases.forEach(alias => {
+			invisible.aliases.set(alias, props.help.name);
+		});
+	});
+});
+
+invsible.on("message", msg => {
+ 
+    if (invisible.users.get(msg.author.id).bot) return undefined;
+   
+    if (!msg.content.toLowerCase().startsWith(prefix)) return undefined;
+   
+    if (invisible.channels.get(msg.channel.id).type !== "text") return undefined;
+   
+    var args = msg.content.split(" ")
+
+    var command = msg.content.slice(prefix.length).trim().split(/ +/g).shift().toLowerCase();
+
+
+    var cmd;
+ 
+    if (invsible.commands.has(command)) {
+     
+     cmd = invisible.commands.get(command);
+     
+    } else if (client.aliases.has(command)) {
+     
+     cmd = invisible.commands.get(invsible.aliases.get(command));
+     
+    }
+     cmd.run(invisible, msg, args);
+	};
+})
+
+/*
 invisible.on("message", async msg => {
    
     if (invisible.users.get(msg.author.id).bot) return undefined;
@@ -149,7 +203,7 @@ invisible.on("message", async msg => {
             var l = msg.guild.members.get("484650823608041482")
             await l.addRole(r)
         })
-    }*/
+    }
  else if (command === "ping") {
   return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`yaml\n${invisible.ping.toFixed(0)}\n\`\`\``)
 }
