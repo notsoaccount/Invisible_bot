@@ -41,7 +41,7 @@ fs.readdir('./cmds/', (err, files) => {
 		var props = require(`./cmds/${ f }`);
 		props.fileName = f;
 		invisible.commands.set(props.help.name, props);
-		props.conf.aliases.forEach(alias => {
+		props.aliases.forEach(alias => {
 			invisible.aliases.set(alias, props.help.name);
 		});
 	});
