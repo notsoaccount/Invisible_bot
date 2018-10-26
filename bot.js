@@ -4,15 +4,17 @@ var invisible = new notDiscord.Client({disableEveryone : true})
  
 var hastebin = require('hastebin-gen');
 
+var settings = require("./settings.json")
+
 var cooldown = new Set();
 
 var secs = 4;
 
-var prefix = "!"
+var prefix = settings.prefix;
 
-var O = "437596176708272140"
+var O = settings.id;
 
-invisible.login("NDkxNjA4NjQwMTIyMjU3NDEw.DquYYg.3gErMWM1XDQb8UCLdGjA3aEbZrc")
+invisible.login(settings.token)
 
 invisible.on("ready", async () => console.log("invisible_bot is ready!!"))
  
@@ -150,5 +152,8 @@ invisible.on("message", async msg => {
     }*/
  else if (command === "ping") {
   return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`yaml\n${invisible.ping.toFixed(0)}\n\`\`\``)
+}
+ else if (command === "play") {
+
 }
 });
