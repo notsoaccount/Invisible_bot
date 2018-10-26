@@ -1,4 +1,5 @@
-module.exports.run = async (invisible, msg, args, cooldown, secs) => {
+var hastebin = require('hastebin-gen');
+module.exports.run = async (invisible, msg, args, cooldown, secs, O) => {
         if (cooldown.has(invisible.users.get(msg.author.id))) {
             return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nWait 4 seconds..\n\`\`\``).then(async m => m.delete(4333))
             
