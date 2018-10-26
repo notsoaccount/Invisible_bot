@@ -103,6 +103,6 @@ module.exports.run = async (invisible, msg, args) => {
             }, secs * 1000);
 }
 
-exports.help {
+exports.help = {
   "name" : "purge"
 }
