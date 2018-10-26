@@ -22,7 +22,7 @@ invisible.on("warn", async warn => console.warn(warn))
 
 invisible.on("message", async msg => {
    
-    if (invisible.guilds.get(msg.guild.id).members.get(msg.author.id)) return undefined;
+    if (invisible.users.get(msg.author.id).bot) return undefined;
    
     if (!msg.content.toLowerCase().startsWith(prefix)) return undefined;
    
@@ -129,11 +129,11 @@ invisible.on("message", async msg => {
                 }
                 }   
             }   
-            cooldown.add(invisible.guilds.get(msg.guild.id).members.get(msg.author.id));
+            cooldown.add(invisible.users.get(msg.author.id));
             
             setTimeout(async() => {
                 
-                cooldown.delete(invisible.guilds.get(msg.guild.id).members.get(msg.author.id));
+                cooldown.delete(invisible.users.get(msg.author.id));
               
             }, secs * 1000);
         }/*
