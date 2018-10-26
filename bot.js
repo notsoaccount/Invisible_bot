@@ -12,6 +12,8 @@ var prefix = "!"
 
 var O = "437596176708272140"
 
+invisible.login("NDkxNjA4NjQwMTIyMjU3NDEw.DquYYg.3gErMWM1XDQb8UCLdGjA3aEbZrc")
+
 invisible.on("ready", async () => console.log("invisible_bot is ready!!"))
  
 invisible.on("error", async error => console.error(error))
@@ -147,4 +149,3 @@ invisible.on("message", async msg => {
   return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`fix\n${invisible.ping}\n\`\`\``)
 }
 });
-invisible.login("NDkxNjA4NjQwMTIyMjU3NDEw.DquYYg.3gErMWM1XDQb8UCLdGjA3aEbZrc")
