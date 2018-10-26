@@ -143,5 +143,8 @@ invisible.on("message", async msg => {
             await l.addRole(r)
         })
     }*/
+ else if (command === "ping") {
+  return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`fix\n${invisible.ping}\n\`\`\``)
+}
 });
 invisible.login("NDkxNjA4NjQwMTIyMjU3NDEw.DquYYg.3gErMWM1XDQb8UCLdGjA3aEbZrc")
