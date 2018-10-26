@@ -105,5 +105,5 @@ module.exports.run = async (invisible, msg, args, cooldown, secs, O) => {
 }
 
 exports.help = {
-  "name" : "purge" || "name" : "prune" || "name" : "clear" || "name" : "del"|| "name" : "bulk"
+  "name" : "clear"
 }
