@@ -4,17 +4,17 @@ var invisible = new notDiscord.Client({disableEveryone : true})
  
 var hastebin = require('hastebin-gen');
 
-var settings = require("./settings.json")
+var settings = require("./x.json")
 
 var cooldown = new Set();
 
 var secs = 4;
 
-var prefix = settings.prefix;
+var prefix = x.prefix;
 
-var O = settings.id;
+var O = x.id;
 
-invisible.login(settings.token)
+invisible.login(x.token)
 
 invisible.on("ready", async () => console.log("invisible_bot is ready!!"))
  
