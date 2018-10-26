@@ -66,10 +66,10 @@ invisible.on("message", async msg => {
                 })
             }
             if (args[1]) {
+                await msg.delete()
                 var mention;
                 mention = invisible.guilds.get(msg.guild.id).member(msg.mentions.users.first());
                 if (mention) {
-                    await msg.delete()
                         await invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).fetchMessages().then(async msgs => {
                             await invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).bulkDelete(msgs.filter(m => m.author.id == mention.id)).then(async msgs => {
                                 if (msg.author.id == msg.mentions.users.first().id) {
