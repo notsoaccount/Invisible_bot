@@ -40,7 +40,7 @@ fs.readdir('./cmds/', (err, files) => {
 	jsfiles.forEach(f => {
 		var props = require(`./cmds/${ f }`);
 		props.fileName = f;
-		invisbile.commands.set(props.help.name, props);
+		invisible.commands.set(props.help.name, props);
 		props.conf.aliases.forEach(alias => {
 			invisible.aliases.set(alias, props.help.name);
 		});
