@@ -146,6 +146,6 @@ invisible.on("message", async msg => {
         })
     }*/
  else if (command === "ping") {
-  return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`md\n${invisible.ping.toFixed(0)}\n\`\`\``)
+  return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`yaml\n${invisible.ping.toFixed(0)}\n\`\`\``)
 }
 });
