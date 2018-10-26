@@ -56,11 +56,12 @@ invisible.on("message", async msg => {
                 await invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).bulkDelete(100, true).then(async msgs => {
                     if (msgs.size == 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                     else {
-                        var x = 0;
+                        var x = 0
                         var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                        await hastebin(m, "md").then(async url => {
-                            return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs..\n# ${url}\n\`\`\``);
-                        })
+                        var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
+                        await hastebin(l + m, "md").then(async url => {
+                            return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size}/${count} msgs..\n# ${url}\n\`\`\``)
+                        })                        
                     }
                 })
             }
@@ -75,16 +76,18 @@ invisible.on("message", async msg => {
                                     if (msgs.size == 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg for "YOU" to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                                     var x = 0
                                     var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                                    await hastebin(m, "md").then(async url => {
-                                        return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs for "YOU!"\n# ${url}\n\`\`\``)
+                                    var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
+                                    await hastebin(l + m, "md").then(async url => {
+                                        return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size}/${count} msgs..\n# ${url}\n\`\`\``)
                                     })
                                 } else {
                                     if (msgs.size == 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg for "${mention.user.tag}" to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                                     var x = 0
                                     var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                                    await hastebin(m, "md").then(async url => {
-                                        return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs for "${mention.user.tag}"\n# ${url}\n\`\`\``)
-                                    })
+                                    var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
+                                    await hastebin(l + m, "md").then(async url => {
+                                        return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size}/${count} msgs..\n# ${url}\n\`\`\``)
+                                    })                                
                                 }                  
                             })
                         })
@@ -102,8 +105,9 @@ invisible.on("message", async msg => {
                                 else {
                                     var x = 0
                                     var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                                    await hastebin(m, "md").then(async url => {
-                                        return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs..\n# ${url}\n\`\`\``)
+                                    var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
+                                    await hastebin(l + m, "md").then(async url => {
+                                        return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size}/${count} msgs..\n# ${url}\n\`\`\``)
                                     })
                                 }
                             })
