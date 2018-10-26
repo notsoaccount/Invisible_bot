@@ -60,7 +60,7 @@ invisible.on("message", msg => {
 
 	if (invisible.commands.has(command)) {
 		cmd = invisible.commands.get(command);
-		cmd.run(invisible, msg, args, cooldown, secs, O);
+		cmd.run(invisible, msg, command, args, cooldown, secs, O);
 
 	} else if (invisible.aliases.has(command)) {
 		cmd = invisible.commands.get(invisible.aliases.get(command));
