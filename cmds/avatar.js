@@ -1,5 +1,5 @@
 module.exports.run = async (msg, args, command, invisible, O) => {
-  msg.channel.send({
+  invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send({
   File : msg.author.avatarURL,
   Name : msg.author.username
 })
