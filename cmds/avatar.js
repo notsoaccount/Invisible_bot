@@ -1,4 +1,4 @@
-module.exports.run = async (msg, args, command, invisible, O) => {
+module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) => {
   msg.channel.send({File : msg.author.avatarURL})
 }
 exports.help = {
