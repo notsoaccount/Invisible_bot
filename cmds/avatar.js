@@ -1,4 +1,4 @@
-mdoule.exports.run = async (msg, args, command, invisible, O) => {
+module.exports.run = async (msg, args, command, invisible, O) => {
   msg.channel.send({
   File : msg.author.avatarURL,
   Name : msg.author.username
