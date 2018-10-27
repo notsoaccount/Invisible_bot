@@ -21,9 +21,8 @@ module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) =>
                     if (msgs.size == 0 || msgs.size == 1) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                     else {
                         var x = 0
-                        var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                        var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
-                        await hastebin(l + m, "md").then(async url => {
+                        var m = await msgs.sort((a, b) => a.createdTimestamp > b.createdTimestamp).map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
+                        await hastebin(m, "md").then(async url => {
                             return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs..\n# ${url}\n\`\`\``)
                         })                        
                     }
@@ -39,17 +38,15 @@ module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) =>
                                 if (msg.author.id == msg.mentions.users.first().id) {
                                     if (msgs.size == 0 || msgs.size == 1) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg for "YOU" to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                                     var x = 0
-                                    var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                                    var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
-                                    await hastebin(l + m, "md").then(async url => {
+                                    var m = await msgs.sort((a, b) => a.createdTimestamp > b.createdTimestamp).map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
+                                    await hastebin(m, "md").then(async url => {
                                         return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs for "You"..\n# ${url}\n\`\`\``)
                                     })
                                 } else {
                                     if (msgs.size == 0) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg for "${mention.user.tag}" to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                                     var x = 0
-                                    var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                                    var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
-                                    await hastebin(l + m, "md").then(async url => {
+                                    var m = await msgs.sort((a, b) => a.createdTimestamp > b.createdTimestamp).map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
+                                    await hastebin(m, "md").then(async url => {
                                         return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size} msgs for "${mention.user.tag}"..\n# ${url}\n\`\`\``)
                                     })                                
                                 }                  
@@ -67,9 +64,8 @@ module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) =>
                                 if (msgs.size == 0 || msgs.size == 1) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                                 else {
                                     var x = 0
-                                    var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                                    var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
-                                    await hastebin(l + m, "md").then(async url => {
+                                    var m = await msgs.sort((a, b) => a.createdTimestamp > b.createdTimestamp).map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
+                                    await hastebin(m, "md").then(async url => {
                                         return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size}/${count} msgs..\n# ${url}\n\`\`\``)
                                     })
                                 }
@@ -80,9 +76,8 @@ module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) =>
                             if (msgs.size == 0 || msgs.size == 1) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nI cant find any msg to "${command}"\n# You should to know that i can't ${command} the very old msgs..\n\`\`\``).then(async m => m.delete(4333))
                             else {
                                 var x = 0
-                                var m = await msgs.map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
-                                var l = `# The last msg in ${invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).name} is the first one here..\n`
-                                await hastebin(l + m, "md").then(async url => {
+                                var m = await msgs.sort((a, b) => a.createdTimestamp > b.createdTimestamp).map(m => `${++x}. ${m.author.tag} : ${m.content.split(" ").join(" ")}`).join("\n")
+                                await hastebin(m, "md").then(async url => {
                                     return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nBulked ${msgs.size}/${count} msgs..\n# ${url}\n\`\`\``)
                                 })
                             }
