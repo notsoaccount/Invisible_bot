@@ -14,11 +14,11 @@ var youtube = new YouTube(GOOGLE_API_KEY);
 
 var queue = new Map();
 
-module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) => {
+module.exports.run = async (invisible, msg, command , cooldown, secs, O) => {
 
-	var searchString = args[1]
+	var args = msg.content.slice(1).trim().split(/ +/g);
 	
-	var url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
+	var url = args ? args.replace(/<(.+)>/g, '$1') : '';
 	
 	var serverQueue = queue.get(invisible.guilds.get(msg.guild.id));
 
