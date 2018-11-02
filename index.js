@@ -34,7 +34,7 @@ fs.readdir('./cmds/', (err, files) => {
 		console.log('No commands to load!');
 		return undefined;
 	}
-	console.log(`[Commands]\tLoaded a total amount ${files.length} Commands`);
+	console.log(`[Commands]\tLoaded a total amount ${files.length-=1} Commands`);
 	jsfiles.forEach(f => {
 		var props = require(`./cmds/${ f }`);
 		props.fileName = f;
