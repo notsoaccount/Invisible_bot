@@ -44,7 +44,7 @@ module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) =>
 			
 		}
 		
-		if (invisible.guilds.get(msg.guild.id).members.get(msg.author.id).voiceChannel.id !== invisible.user.id.voiceChannel.id) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\n"You" are not in "${invisible.user.voiceChannel.name}"\n\`\`\``)
+		if (invisible.guilds.get(msg.guild.id).members.get(msg.author.id).voiceChannelID !== invisible.user.id.voiceChannelID) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\n"You" are not in "${invisible.user.voiceChannel.name}"\n\`\`\``)
 
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
 		    
