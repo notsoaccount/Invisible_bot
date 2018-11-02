@@ -20,7 +20,7 @@ module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) =>
 	
 	var url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
 	
-	var serverQueue = queue.get(invisible.user.guilds.get(msg.guild.id));
+	var serverQueue = queue.get(invisible.guilds.get(msg.guild.id));
 
 	if (command === 'play') {
 	    
