@@ -74,7 +74,7 @@ module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) =>
 					
 					let index = 0;
 					
-					invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nResults for ${args[1]} :\n${videos.map(video2 => `${++index}. "${video2.title}"\n\`\`\``).join('\n')}`);
+					invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\nResults for ${args} :\n${videos.map(video2 => `${++index}. "${video2.title}"\n\`\`\``).join('\n')}`);
 					
 					try {
 					    
