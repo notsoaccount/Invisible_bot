@@ -5,6 +5,7 @@ var invisible = require("discord.js")
 var settings = require('./settings.json');
 
 var GOOGLE_API_KEY = settings.GOOGLE_API_KEY
+
 var YouTube = require('simple-youtube-api');
 
 var ytdl = require('ytdl-core');
