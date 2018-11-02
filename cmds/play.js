@@ -2,7 +2,7 @@ var { Client, Util, notDiscord } = require('discord.js');
 
 var invisible = require("discord.js")
 
-var settings = require('./key.json');
+var key = require('./key.json');
 
 var GOOGLE_API_KEY = key.stupid_key;
 
