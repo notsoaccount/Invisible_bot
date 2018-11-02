@@ -44,8 +44,6 @@ module.exports.run = async (invisible, msg, command ,args, cooldown, secs, O) =>
 			
 		}
 		
-		if (invisible.guilds.get(msg.guild.id).members.get(msg.author.id).voiceChannelID !== invisible.user.id.voiceChannelID) return invisible.guilds.get(msg.guild.id).channels.get(msg.channel.id).send(`\`\`\`py\n"You" are not in "${invisible.user.id.voiceChannel.name}"\n\`\`\``)
-
 		if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
 		    
 			var playlist = await youtube.getPlaylist(url);
@@ -163,6 +161,8 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
 			playing: true
 			
 		};
+		
+		
 		queue.set(invisible.user.guilds.get(msg.guild.id), queueConstruct);
 
 		queueConstruct.songs.push(song);
