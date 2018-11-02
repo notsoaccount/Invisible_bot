@@ -18,7 +18,7 @@ module.exports.run = async (invisible, msg, command , cooldown, secs, O) => {
 
 	var args = msg.content.slice(1).trim().split(/ +/g);
 	
-	var url = args ? args.replace(/<(.+)>/g, '$1') : '';
+	var url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
 	
 	var serverQueue = queue.get(invisible.guilds.get(msg.guild.id));
 
